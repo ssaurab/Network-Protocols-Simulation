@@ -1,0 +1,587 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+
+\series bold
+WORKING WITH ICMP
+\end_layout
+
+\begin_layout Author
+S Srinivas Saurab
+\begin_inset Newline newline
+\end_inset
+
+CS16B039
+\begin_inset Newline newline
+\end_inset
+
+Dept.
+ of CSE, IIT-Madras
+\end_layout
+
+\begin_layout Standard
+The ICM protocol, simply called ICMP, is one of the three main components
+ of the Network layer.
+ This is used by hosts and routers to specify the network-layer information
+ to each other.
+ The most notable feature about the ICMP is that these messages are carried
+ as payloads inside IP datagrams.
+ However, this does not mean that ICMP is an upper layer protocol.
+ Interestingly, the traceroute programs extensively uses ICMP messages to
+ get the IP addresses and RTT corresponding to the routers in a given path.
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Using PING:
+\end_layout
+
+\begin_layout Standard
+Ping is a program that allows us to verify if a host is live or not.
+ Ping makes use of ICMP packets.
+ A 
+\series bold
+particular type of ICMP packet
+\series default
+ is sent to the interested destination.
+ The host at the destination responds back with another typical ICMP packet.
+ Using this packet, the ping program finds out RTT and status of the destination
+ server.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset External
+	template Dia
+	filename ping_terminal.pdf
+	scale 60
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Figure showing a ping command (count = 10) directed to Virginia Tech University
+\end_layout
+
+\begin_layout Subsection*
+Question 1:
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+command
+\series default
+ ran : 
+\series bold
+ping vt.edu -c 10 (Virginia Tech University)
+\series default
+
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+Source IP
+\series default
+ : 192.168.0.101
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+Destination IP
+\series default
+ : 192.82.215.14
+\end_layout
+
+\begin_layout Subsection*
+Question 2:
+\end_layout
+
+\begin_layout Standard
+In the ping pakcets, we can see that the ICMP payload has not mention to
+ any kind of address.
+ 
+\series bold
+ICMP is carried as a payload within an IP datagram
+\series default
+ and does not have an header associated with it.
+ Within this payload, there is no mention about any address.
+ This is not similar to TCP/UDP (have port addresses) which too are data
+ carried inside IP datagrams.
+ 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+This is because, when the protocol in IP header is ICMP the host/router
+ has 
+\series bold
+well defined
+\series default
+ way of handling this ICMP data message.
+ There is no ambiguity as to which single application needs to collect this
+ information.
+ Therefore there is no need of address inside ICMP message.
+ The IP address of the destination in the IP header is enough for the packet
+ to be tramsitted appropriately, unlike TCP/UDP where port numbers are needed.
+\end_layout
+
+\begin_layout Subsection*
+Question 3:
+\end_layout
+
+\begin_layout Standard
+\begin_inset External
+	template Dia
+	filename Q3.pdf
+	scale 50
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+In the above figure, we see a capture of expanded version of one of the
+ ping requests.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+The fields in ICMP are :
+\series default
+
+\begin_inset Newline newline
+\end_inset
+
+1) Type = 8 : corresponds to ping request
+\begin_inset Newline newline
+\end_inset
+
+2) Code = 0
+\begin_inset Newline newline
+\end_inset
+
+3) Checksum : 2 bytes
+\begin_inset Newline newline
+\end_inset
+
+4) Identifier : 2 bytes
+\begin_inset Newline newline
+\end_inset
+
+5) Sequence number : 2 bytes
+\begin_inset Newline newline
+\end_inset
+
+6) Timestamp
+\begin_inset Newline newline
+\end_inset
+
+7) Data
+\end_layout
+
+\begin_layout Subsection*
+Question 4:
+\end_layout
+
+\begin_layout Standard
+\begin_inset External
+	template Dia
+	filename Q4.pdf
+	scale 50
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+In the above figure, we see a capture of expanded version of one of the
+ ping replies.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+The fields in ICMP are :
+\series default
+
+\begin_inset Newline newline
+\end_inset
+
+1) Type = 0 : corresponds to ping response
+\begin_inset Newline newline
+\end_inset
+
+2) Code = 0
+\begin_inset Newline newline
+\end_inset
+
+3) Checksum : 2 bytes
+\begin_inset Newline newline
+\end_inset
+
+4) Identifier : 2 bytes
+\begin_inset Newline newline
+\end_inset
+
+5) Sequence number : 2 bytes
+\begin_inset Newline newline
+\end_inset
+
+6) Timestamp
+\begin_inset Newline newline
+\end_inset
+
+7) Data
+\end_layout
+
+\begin_layout Section*
+Using TRACEROUTE:
+\end_layout
+
+\begin_layout Standard
+Traceroute is a program that makes use of UDP packets to get the IPs of
+ all the routers along a given path and the time delays between them.
+ This is achieved by sending a 
+\series bold
+sequence of UDP packets
+\series default
+ with TTL ranging from 1 to 64 (MAX).
+ Everytime a router identifies that a packet has expired, it sends a correspondi
+ng 
+\series bold
+ICMP error message
+\series default
+ to the source host.
+ The traceroute then identifies the details about the router from this ICMP
+ message.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+command used 
+\series default
+: traceroute vt.edu (Vriginia Tech University)
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset External
+	template Dia
+	filename ICMPTraceRouteTerminal.pdf
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Question 5:
+\end_layout
+
+\begin_layout Standard
+IP address of our host : 192.168.0.101
+\begin_inset Newline newline
+\end_inset
+
+IP address of Virginia Tech host : 198.82.215.14
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+The destination IP address can be seen from the last echo.
+ Alternatively this can also be seen from any echo because, every response
+ (TTL expire warning) also contains the original packet the host tried to
+ send.
+\end_layout
+
+\begin_layout Subsection*
+Question 6:
+\end_layout
+
+\begin_layout Standard
+Different upper layer protocols are assigned different values for the protocol
+ field in the IP header.
+ For ICMP it is 01, where as for UDP it 
+\series bold
+will be 17
+\series default
+.
+ This is a must because, if the IP datagrams encapsulate UDP packets, then
+ having 17 as the protocol number is important in processing the packet
+ when it arrives at the host.
+ If it were falsely written as 1 instead, the host will try to break the
+ payload as an ICMP packet which
+\series bold
+ has different fields
+\series default
+ and demarcations.
+ The same can be seen from the UDP probes sent from our Linux system.
+ 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset External
+	template Dia
+	filename Q6.pdf
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Question 7:
+\end_layout
+
+\begin_layout Standard
+The ICMP packet resembles ping (request and reply) packet upto the IP header.
+ From IP header, the whole payload is a lot different.
+ This is because, the fields in the ping response (identification, sequence
+ number) are absent in the traceroute echo messages.
+ A more important difference is the contents of the data within ICMP payload.
+ This 
+\series bold
+data has the copy of the original packet as such 
+\series default
+that was failed to be forwarded because of TTL expiration.
+ Another difference is the Type field value which is 11 and the code is
+ 0 unlike ping packets (Type : 0,8).
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+running the command : sudo traceroute -I vt.edu
+\begin_inset Newline newline
+\end_inset
+
+(uses echo ICMP instead of UDPs : refer to Traceroute2.pcapng)
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset External
+	template Dia
+	filename Q8.pdf
+	scale 50
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset External
+	template Dia
+	filename Q71.pdf
+	scale 50
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+On opening a Echo message and comparing with the ping packet used in ping
+ command, we can find that there is no difference in the fields names i.e
+ the structure of the packet.
+ The only diffrence here is that TTL is set differently (from 1 to 17 in
+ our case).
+ These TTL variations can be seen from the wireshark capture.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection*
+Question 8:
+\end_layout
+
+\begin_layout Standard
+\begin_inset External
+	template Dia
+	filename Q81.pdf
+	scale 50
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Upto IP header, the ICMP error as well as the echo messages take the same
+ format.
+ However their payloads, which in turn contain the ICMP data messages, are
+ entirely different.
+ Both ICMP data messages have Type, Code fields as well as checksum.
+ The 
+\series bold
+differences
+\series default
+ between the ICMP error message and the ICMP ping messages are:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+1) Echo packet has Identifier and a Sequence number field which is used
+ by the ping program.
+ These fields are not present in the ICMP error message.
+\begin_inset Newline newline
+\end_inset
+
+2) Echo packet has a small data field (usually 24 bytes).
+ However ICMP error message has the 
+\series bold
+entire packet that was initially transmitted 
+\series default
+by the router (with an insufficient TTL) starting from the network layer
+ header.
+ This is the reason why it appears to have more fields because it encapsulates
+ the original ping packet in its payload.
+\end_layout
+
+\begin_layout Subsection*
+Question 9:
+\end_layout
+
+\begin_layout Subsection*
+Question 10:
+\end_layout
+
+\end_body
+\end_document

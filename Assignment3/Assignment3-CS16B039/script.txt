@@ -1,0 +1,59 @@
+Script started on Friday 22 March 2019 07:04:32 PM IST
+
+saurab@saurab-VirtualBox: ~/Downloads/Assignment3-CS16B039saurab@saurab-VirtualBox:~/Downloads/Assignment3-CS16B039$ 
+
+client.py 5001
+Your command here:ls
+NLST
+the contents of the requested directory are :
+ SD2, assignment1, assignment3, SD1, assignment2, SD3
+Your command here:get assignment1
+server ack recieved : 
+OKtoSend
+created such a file and write is successful
+Your command here:cd SD1
+CWD SD1
+SD1
+Your command here:get AnglesInTheGarden
+server ack recieved : 
+Invalid Filename was given
+Your command here:get AngelsInTheGarden
+server ack recieved : 
+OKtoSend
+created such a file and write is successful
+Your command here:get insider
+server ack recieved : 
+OKtoSend
+created such a file and write is successful
+Your command here:pwd
+The current working directory of the server is :
+SD1
+Your command here:cd ..
+CWD ..
+FTP_SERVER
+Your command here:pwd
+The current working directory of the server is :
+FTP_SERVER
+Your command here:cd ..
+CWD ..
+trying to get out of root, illegal
+Your command here:pwd
+The current working directory of the server is :
+FTP_SERVER
+Your command here:cd SD2
+CWD SD2
+SD2
+Your command here:put cliw entdata2
+OK ack recived from server
+file transmission sucessful
+Your command here:ls
+NLST
+the contents of the requested directory are :
+ clientdata2, text, AngelsInTheGarden, moon, insider, Basilica
+Your command here:quit
+Exiting the connection, closing the sockets ....
+Termination acknowledged from server
+]0;saurab@saurab-VirtualBox: ~/Downloads/Assignment3-CS16B039saurab@saurab-VirtualBox:~/Downloads/Assignment3-CS16B039$ exit
+exit
+
+Script done on Friday 22 March 2019 07:06:48 PM IST

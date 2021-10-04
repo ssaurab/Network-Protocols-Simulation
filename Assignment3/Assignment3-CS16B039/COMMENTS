@@ -1,0 +1,35 @@
+******************************************************************
+			CS16B039
+		     S SRINIVAS SAURAB
+			ASSIGNMENT 3
+			 COMMENTS
+******************************************************************
+
+The assignment gives us the depth of implementation present in FTP 
+protocol. We learn how to use the underlying TCP for safe data transfer
+and to link application to the socket communication (binding) involved.
+This shows us why the current day network applications are easy to write
+as we do not have to worry about the lower layers. Even encode the data
+(utf-8 or data64) there are ready APIs available between application and
+the socket interface like the .encode() method that we have used.
+
+Also we have divided the client into two encapsulated modules :
+USER INPUT INTERFACE -  Deals only with the user input, parses it and sends 
+			to network interface
+
+NETWORK INTERFACE -     Takes in data given be UII, sends appropropriate 
+			commands to server and saves files, shows stdout info
+			as needed
+
+We also learn the use of sockets and their behaviour, accuracy and speed
+as we use them throughout this assignment.  
+
+We also learn the usage of wireshark. By inspecting the packet and its
+headers of multile layers, we gain a idea on how the encapsulation is 
+done layerwise and the protocols, parameters involved in the same. 
+
+This is the first time I have communicated files between two distinct 
+systems without using the internet and in the process learnt a lot about
+the network details and socket programming involved.
+
+

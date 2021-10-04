@@ -1,0 +1,132 @@
+******************************************************************
+			CS16B039
+		     S SRINIVAS SAURAB
+			ASSIGNMENT 3
+		     WIRESHARK COMMENTS
+******************************************************************
+
+Encoding used : utf-8
+In both two_machine as well as a single machine, when we use wireshark
+to tap the packets sent on the TCP protocol, we find the TCP 3-way 
+handshake that will be established first. Followed by that we can see the
+methodology in which each command is executed in the TCP protocol. For 
+example, a simple 'ls' command followed by dirname is first sent from the 
+client(192.168.2.11) to the server, the server(192.168.2.4) then sends the
+string of the current contents of the respective directory and an acknowledgement
+of the client's request. The client finally sends the acknowledgement as well and
+a single message is in this way, successfully communicated.
+
+
+
+The sample runs explained : 
+
+1>THE SINGLE MACHINE SAMPLE RUN :
+
+   Filter : tcp.port == 5002
+   Observations :
+	Protocol        : IPv4
+	Source IP       : 127.0.0.1
+	Destination IP  : 127.0.0.1
+	Protocol        : TCP(as the filter was set to TCP)
+	IP-header       : 20 bytes(i.e no extra options in the header)
+	Source Port     : 41312
+	DestinationPort : 5002 (in line with the binding we have done)
+	MAC address of the present device : 80:56:f2:34:8c:bf
+
+
+   commands in succession : 
+NOTE : the files and directory structures do not match with the sample session in assignment
+	ls
+	cd yo1
+	ls
+	get insider
+	get hello.xx
+	put yo.u
+	cd insider
+	ls
+	cd darkweb
+	put yo.u
+	quit
+
+Wireshark observations : 
+	We can see that the source, destination IP addresses in the
+ communication happen to be 127.0.0.1 which is expected when we are
+ running theclient and server in localhost state. In the first three
+ rows of wireshark capture we see the tcp-specific three way handshake as:
+
+[SYN], [SYN,ACK], [ACK] and the data (request) follows immediately
+from the client after this. 
+
+Request wise :
+
+ls     - data is 'NLST' which is the command as expected
+         we get back the contents of the SERVER_ROOT
+
+cd yo1 - request 'CWD yo1' is visible, the server also responds
+	 with the directory name as the status (i.e success here)
+
+get insider - 'RETR insider' is sent, the server responds with a 
+	       custom error message : "Invalid Filename was given"
+               because insider is not a file but a directory
+get hello.xx - 'RETR hello.xx' is sent, the server first sends
+		ok to send ack to client followed by the contents
+		of the file in the packets to follow which can be 
+		seen from the data
+put yo.u - Note that we are in the directory named darkweb now,
+	   The client sends 'STOR yo.u' and server sends a ok to
+	   ok to send ack to which the client responds by sending
+	   the file data in the subsequent packets all of which can
+	   be seen in the wireshark capture.
+
+ quit - The client sends the encoded message 'QUIT' to which the server
+	responds by sending the ACK as "Termination acknowledged from Server"
+	Both parties then close the connection on the respective sides.
+
+2>THE TWO MACHINE SAMPLE RUN :
+
+   Filter : tcp.port == 5002
+   Observations :
+	Protocol        : IPv4
+	Source IP       : 192.168.0.103
+	Destination IP  : 10.0.2.15
+	Protocol        : TCP(as the filter was set to TCP)
+	IP-header       : 20 bytes(i.e no extra options in the header)
+	Source Port     : 41312
+	DestinationPort : 5002 (in line with the binding we have done)
+	MAC address of the present device : 80:56:f2:34:8c:bf
+	MAC address of the foreign device : 08:00:27:0b:60:98
+
+commands in succession : 
+
+	ls 
+	get sdata1 (in FTP-SERVER of foreign laptop)
+	put AngelsInTheGarden
+	pwd
+	ls
+	quit
+
+Wireshark observations : 
+	We can see that the source, destination IP addresses stay the same throughout which is expected when we are communicating through commands in one connection. 
+
+Request wise :
+
+get sdata1 - we can see the command as 'RETR sdata1' that is being 
+	     sent from the client to the server running in the 
+	     foreign machine. As a response server sends the 		     
+             oktosend ack to which the client sends ACK and the file
+	     transfer begins which can be seen in the data part of the
+	     subsequent packets.
+
+put AngelsInTheGarden -
+		We can see the request 'STOR AngelsInTheGarden' being
+		sent to which the server responds with a OKtoSend ACK.
+		the file transfer begins which can be seen in the data 
+		part of the subsequent packets.
+
+ls     - data is 'NLST' which is the command as expected
+         we get back the contents of the SERVER_ROOT
+
+
+ quit - The client sends the encoded message 'QUIT' to which the server
+	responds by sending the ACK as "Termination acknowledged from Server"
+	Both parties then close the connection on the respective sides.

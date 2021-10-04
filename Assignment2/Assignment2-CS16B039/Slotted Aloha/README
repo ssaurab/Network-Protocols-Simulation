@@ -1,0 +1,13 @@
+******************************************************************
+			CS16B039
+		     S SRINIVAS SAURAB
+			README CRC
+
+******************************************************************
+
+The files "1", "2", "4" have the datapoints needed for gnu plotting.
+To run aloha.cpp use the make command and run is as ./a.out -N 50 -W 2 -p 0.5 -M 5000
+
+Note that every iteration is being shown including the buffer and backoffs in the stdout.
+In case you wish to see only the throughput and average packet delay, please comment out
+the "cout" functions in the code. 

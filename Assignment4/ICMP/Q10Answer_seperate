@@ -1,0 +1,11 @@
+Question 10:
+
+In the image of running traceroute in terminal (above Q5),
+ we find that there is a sudden jump in the RTTs from router
+ 9 to router 10. This gap corresponds to a trans-continental 
+link between these routers. As the domain we are interested 
+in is vt.edu which is Virginia Tech University, this link 
+here might correspond to on of the multiple trans-continental
+ links from Asia. Similarly we can see few other jumps (15,16)
+ (17,18). Each of these could correspond to subseqent trans-continental
+ links or heavily conjested routers along the way.
