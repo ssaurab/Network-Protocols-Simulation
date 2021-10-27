@@ -1,9 +1,17 @@
-# CS3205_Computer_Networks
 
-Assignements in CS3205 (Computer Networks) course, IIT Madras, Jan-May 2019. <br>
+Don't worry, I don't always use spaces in my directory names, but some of the protocols in same folders are unrelated, but I worked on them at the same time. That is the reason behind the naming.
 
-Assignment 1: An implementation of the Go-back-N and the selective repeat protocols<br>
-Assignment 2: An implementation of the Slotted Aloha along with Cyclic Redudancy check to catch errors<br>
-Assignment 3: A console based implementation of the File Transfer Protocol<br>
-Assignment 4: An implementation of the Domain Name System and the ICMP protocols<br>
-Assignment 5: An implementation of the Routing information protocol and the Open Shortest Path First protocols<br>
+GoBackN and SR Protocols: <br>
+An implementation of the Go-back-N and the selective repeat protocols.<br>
+
+SlottedAloha with CRC:<br>
+An implementation of the Slotted Aloha along with Cyclic Redudancy check to catch errors.<br>
+
+FTP:<br>
+A console based implementation of the File Transfer Protocol<br>
+
+DNS and ICMP:<br>
+An implementation of the Domain Name System and the ICMP protocols<br>
+
+OSPF and RIP:<br>
+An implementation of the Routing information protocol and the Open Shortest Path First protocols<br>
