@@ -1,9 +1,3 @@
-******************************************************************
-			CS16B039
-		     S SRINIVAS SAURAB
-			README CRC
-
-******************************************************************
 
 The files "1", "2", "4" have the datapoints needed for gnu plotting.
 To run aloha.cpp use the make command and run is as ./a.out -N 50 -W 2 -p 0.5 -M 5000

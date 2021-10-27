@@ -1,10 +1,3 @@
-******************************************************************
-			CS16B039
-		     S SRINIVAS SAURAB
-			README
-
-******************************************************************
-
 The port number is hardcoded and thus need not be mentioned.
 To run the source codes, first compile them using make file.
 After that run the executables in pairs as follows : 

@@ -1,0 +1,7 @@
+
+Please compile the crc code as : 
+	g++ crc.cpp -std=c++11
+Then run it as :
+	./a.out infile outfile
+
+Note that the sample infile and outfile are already present in the directory

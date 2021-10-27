@@ -1,11 +1,6 @@
-******************************************************************
-			CS16B039
-		     S SRINIVAS SAURAB
-			ASSIGNMENT 3
-			  README
-******************************************************************
 
-run the .py files as :
+
+Run the .py files as :
 	
 	python client.py 5001
 	python server.py 5001
