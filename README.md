@@ -13,4 +13,4 @@ An implementation of the Domain Name System and the ICMP protocols<br>
 **OSPF and RIP:**<br>
 An implementation of the Routing information protocol and the Open Shortest Path First protocols<br>
 
-On directory names: Don't worry, I don't always use spaces in my directory names, but some of the protocols in same folders are unrelated, but I worked on them at the same time. That is the reason behind the naming.
+On directory names: Don't worry, I don't always use spaces in my directory names, but some of the protocols in same folders are unrelated although I worked on them at the same time, and hence the name.
