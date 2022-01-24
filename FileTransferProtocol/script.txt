@@ -1,6 +1,5 @@
 Script started on Friday 22 March 2019 07:04:32 PM IST
 
-saurab@saurab-VirtualBox: ~/Downloads/Assignment3-CS16B039saurab@saurab-VirtualBox:~/Downloads/Assignment3-CS16B039$ 
 
 client.py 5001
 Your command here:ls
@@ -53,7 +52,6 @@ the contents of the requested directory are :
 Your command here:quit
 Exiting the connection, closing the sockets ....
 Termination acknowledged from server
-]0;saurab@saurab-VirtualBox: ~/Downloads/Assignment3-CS16B039saurab@saurab-VirtualBox:~/Downloads/Assignment3-CS16B039$ exit
 exit
 
 Script done on Friday 22 March 2019 07:06:48 PM IST

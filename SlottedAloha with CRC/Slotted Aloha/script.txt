@@ -1,5 +1,5 @@
 Script started on Thursday 07 March 2019 11:37:48 PM IST
-]0;saurab@saurab-VirtualBox: ~/Desktop/sem 6/Assignment2/SLOTTED ALOHA[01;32msaurab@saurab-VirtualBox[00m:[01;34m~/Desktop/sem 6/Assignment2/SLOTTED ALOHA[00m$ ./a.out -N 5 0 - [KW 2 -P[Kp 0.03 -M 1000
+0 - [KW 2 -P[Kp 0.03 -M 1000
 
 
 
@@ -132568,7 +132568,6 @@ W : 2
 Packet generation rate : 0.03
 Utilization : 0.449484
 Average Packet Delay : 1268.01
-]0;saurab@saurab-VirtualBox: ~/Desktop/sem 6/Assignment2/SLOTTED ALOHA[01;32msaurab@saurab-VirtualBox[00m:[01;34m~/Desktop/sem 6/Assignment2/SLOTTED ALOHA[00m$ end
 No command 'end' found, did you mean:
  Command 'esd' from package 'pulseaudio-esound-compat' (universe)
  Command 'ed' from package 'ed' (main)
@@ -132584,7 +132583,6 @@ No command 'end' found, did you mean:
  Command 'bnd' from package 'bnd' (universe)
  Command 'ent' from package 'ent' (universe)
 end: command not found
-]0;saurab@saurab-VirtualBox: ~/Desktop/sem 6/Assignment2/SLOTTED ALOHA[01;32msaurab@saurab-VirtualBox[00m:[01;34m~/Desktop/sem 6/Assignment2/SLOTTED ALOHA[00m$ exit
 exit
 
 Script done on Thursday 07 March 2019 11:40:18 PM IST
